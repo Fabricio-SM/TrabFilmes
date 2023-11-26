@@ -2,11 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'routes.dart';
 import 'routes/login_page.dart';
+import 'widgets/perfil_cache.dart';
 
-void main() {
+void main() async {
+  // pede pro flutter utilizar os recursos nativos do android (camera,microfone...)
+  // // garante o bind entre o flutter e outra linguagem q esteja sendo usada (por exemplo C#, C++)
+  // sempre colocar no caso de ser preciso usar um perfiférico
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(FilmesApp());
 }
 
@@ -15,15 +20,22 @@ class FilmesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateTitle: (context) => "Filmes App",
-      initialRoute: RouteGenerator.homePage,
-      onGenerateRoute: RouteGenerator.generateRoute,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Cache>.value(
+          value: Cache(),
+        ),
+      ],
+      child: MaterialApp(
+        onGenerateTitle: (context) => "Filmes App",
+        initialRoute: RouteGenerator.homePage,
+        onGenerateRoute: RouteGenerator.generateRoute,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.cyan,
+        ),
+        home: FormLogin(),
       ),
-      home: FormLogin(),
     );
   }
 }

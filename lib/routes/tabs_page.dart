@@ -15,7 +15,7 @@ class TabsPage extends StatelessWidget {
       length: 2, // Este é o número de guias (tabs).
       child: Scaffold(
         body: TabBarView(
-          children: [
+          children: const [
             Home(),
             MyProfile(),
           ],
@@ -26,7 +26,6 @@ class TabsPage extends StatelessWidget {
             color: Color.fromARGB(150, 86, 223, 223),
           ),
           child: const TabBar(
-            labelColor: Colors.blue,
             unselectedLabelColor: Colors.white,
             tabs: [
               SizedBox(
