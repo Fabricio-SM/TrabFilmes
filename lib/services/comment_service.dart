@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter_application_1/model/comment.dart';
 import 'package:http/http.dart' as http;
 
-const String Url = 'http://192.168.0.106:5000/posts';
+const String Url = 'http://192.168.6.93:5000/posts';
 
 Future<List<Comment>> fetchComm() async {
   final response = await http.get(Uri.parse(Url));
@@ -45,7 +47,7 @@ Future<void> postComm(Comment comentario) async {
 }
 
 Future<void> attComment(String id, Comment comentario) async {
-  final Uri apiUrl = Uri.parse('$Url/update_post/$id');
+  final Uri apiUrl = Uri.parse(Url);
 
   try {
     final response = await http.put(
@@ -68,7 +70,7 @@ Future<void> attComment(String id, Comment comentario) async {
 }
 
 Future<void> deleteComment(String id) async {
-  final Uri apiUrl = Uri.parse('$Url/delete_post/$id');
+  final Uri apiUrl = Uri.parse('$Url/$id');
 
   try {
     final response = await http.delete(apiUrl);

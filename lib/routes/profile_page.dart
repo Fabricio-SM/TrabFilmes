@@ -3,8 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes/tirar_foto.dart';
 import 'package:flutter_application_1/widgets/perfil_cache.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import '../services/location_service.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile();
@@ -15,6 +18,8 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfile extends State<MyProfile> {
   TextEditingController dateinput = TextEditingController();
+  final LocationService _locationService = LocationService();
+  final TextEditingController _addressController = TextEditingController();
 
   @override
   void initState() {
@@ -113,9 +118,10 @@ class _MyProfile extends State<MyProfile> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
+                          controller: _addressController,
                           readOnly: true,
                           decoration: InputDecoration(
-                            labelText: 'Endereço',
+                            labelText: _addressController.text,
                             filled: true,
                             fillColor: const Color.fromARGB(255, 255, 255, 255),
                             border: OutlineInputBorder(
@@ -166,8 +172,22 @@ class _MyProfile extends State<MyProfile> {
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
-                          child: Text("Ativar Geolocalização"),
-                          onPressed: () {},
+                          child: Text("Buscar endereço"),
+                          onPressed: () async {
+                            Placemark? placemark =
+                                await _locationService.getCurrentLocation();
+
+                            if (placemark != null) {
+                              setState(() {
+                                _addressController.text =
+                                    '${placemark.locality}, ${placemark.administrativeArea}, ${placemark.country}';
+                              });
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text(
+                                      'Não foi possível obter a localização.')));
+                            }
+                          },
                         )
                       ],
                     ),
@@ -181,3 +201,6 @@ class _MyProfile extends State<MyProfile> {
     );
   }
 }
+
+// criar o provider para guardar a url da imagem tirada
+// inserir o consumer para buscar o url

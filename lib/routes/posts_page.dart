@@ -27,36 +27,6 @@ class _PostMenuState extends State<Home> {
           ),
           backgroundColor: Color.fromARGB(0, 236, 233, 248),
           body: CommentListWidget(),
-          //     SingleChildScrollView(
-          //   child: Column(
-          //     children: [
-          //       Container(
-          //         margin: EdgeInsets.only(bottom: 160, top: 10),
-          //         width: 1080,
-          //         decoration: BoxDecoration(
-          //             color: Color.fromARGB(236, 247, 239, 239),
-          //             borderRadius: BorderRadius.circular(30)),
-          //         child: Column(children: [
-          //           ListView.builder(
-          //             shrinkWrap: true,
-          //             itemCount: cache.listPerfil.length,
-          //             itemBuilder: (context, index) {
-          //               final perfis = cache.listPerfil;
-          //               return Padding(
-          //                 padding: const EdgeInsets.only(bottom: 30),
-          //                 child: FilmCard(
-          //                   perfil: perfis,
-          //                   comment: [],
-          //                   index: index,
-          //                 ),
-          //               );
-          //             },
-          //           ),
-          //         ]),
-          //       ),
-          //     ],
-          //   ),
-          // ),
           floatingActionButton: FloatingActionButton(
             child: Icon(
               Icons.add,

@@ -4,7 +4,7 @@ class Comment {
   final String imgUrl;
   final String conteudo;
 
-  const Comment(
+  Comment(
       {required this.id, required this.titulo, required this.imgUrl, required this.conteudo});
 
   Map<String, dynamic> toJson() {

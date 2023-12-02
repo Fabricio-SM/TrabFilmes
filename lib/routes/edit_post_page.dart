@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/comment.dart';
+import 'package:flutter_application_1/services/notification_service.dart';
 import '../services/comment_service.dart';
 import 'package:flutter_application_1/styles.dart';
 
@@ -100,7 +103,14 @@ class _EditPostState extends State<EditPost> {
                 if (isEditing)
                   ElevatedButton(
                     onPressed: () {
-                      attComment(widget.commId, widget.comentario);
+                      var comentario = Comment(
+                          id: widget.comentario.id,
+                          titulo: titleController.text,
+                          // titleController.text == null ? widget.comentario.conteudo : titleController.text,
+                          imgUrl: imgController.text,
+                          conteudo: commController.text);
+
+                      attComment(widget.commId, comentario);
                       setState(() {
                         isEditing = false;
                       });
@@ -119,6 +129,8 @@ class _EditPostState extends State<EditPost> {
                 ElevatedButton(
                   onPressed: () {
                     deleteComment(widget.commId);
+                    NotificationService.showNotification(
+                    "Remoção de comentários", "Comentário removido.");
                     Navigator.pop(context);
                   },
                   child: Text('Excluir comentário'),
@@ -134,54 +146,3 @@ class _EditPostState extends State<EditPost> {
     );
   }
 }
-
-
-// class _UpdateCommentScreenState extends State<UpdateCommentScreen> {
-//   final TextEditingController titleController = TextEditingController();
-//   final TextEditingController textController = TextEditingController();
-
-//   // Use o serviço HTTP para atualizar o comentário
-//   void updateComment() {
-//     final commentService = CommentService(baseUrl: 'https://api.example.com');
-
-//     commentService.updateComment(
-//       widget.commentId,
-//       titleController.text,
-//       textController.text,
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Atualizar Comentário'),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: Column(
-//           children: [
-//             TextField(
-//               controller: titleController,
-//               decoration: InputDecoration(labelText: 'Título do Comentário'),
-//             ),
-//             SizedBox(height: 16.0),
-//             TextField(
-//               controller: textController,
-//               maxLines: null,
-//               decoration: InputDecoration(labelText: 'Texto do Comentário'),
-//             ),
-//             SizedBox(height: 16.0),
-//             ElevatedButton(
-//               onPressed: () {
-//                 updateComment();
-//               },
-//               child: Text('Atualizar Comentário'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-

@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_picker/image_picker.dart';
 
 class TakePicture extends StatefulWidget {
   const TakePicture({super.key});
@@ -21,6 +22,8 @@ class _TakePictureState extends State<TakePicture> {
       _cameraController; // objeto que controlará a câmera
   // pois a chamada da camera é assíncrona
   late final Future<void> _cameraIniciada;
+  
+  late String pathToProfilePic;
 
   @override
   void initState() {
@@ -28,12 +31,10 @@ class _TakePictureState extends State<TakePicture> {
     // // pede pro flutter utilizar os recursos nativos do android (camera,microfone...)
     // // garante o bind entre o flutter e outra linguagem q esteja sendo usada (por exemplo C#, C++)
     // WidgetsFlutterBinding.ensureInitialized();
-
-   
   }
 
-  Future<void> inciarCamera() async{
-     // transforma em objeto as descrições das câmeras presentes no dispositivo
+  Future<void> iniciarCamera() async {
+    // transforma em objeto as descrições das câmeras presentes no dispositivo
     // comando assíncrono, EXECUTAR DEPOIS DO WIDGETSFLUTTER.....
     final cameras = await availableCameras();
     final camera = cameras.first;
@@ -52,7 +53,7 @@ class _TakePictureState extends State<TakePicture> {
         children: [
           // constrói a janela com a imagem da câmera
           FutureBuilder(
-            future: inciarCamera(), // espera inicializar a câmera
+            future: iniciarCamera(), // espera inicializar a câmera
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return Center(
@@ -73,8 +74,11 @@ class _TakePictureState extends State<TakePicture> {
               final image = await _cameraController.takePicture();
               Uint8List imageBytes = await image.readAsBytes();
               // salva a foto na galeria
-              ImageGallerySaver.saveImage(imageBytes);
-
+              final imageSavedData =
+                  await ImageGallerySaver.saveImage(imageBytes);
+              String URL = imageSavedData["filePath"];
+              this.pathToProfilePic = URL;
+              print(URL);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("Foto salva na Galeria"),
@@ -90,6 +94,7 @@ class _TakePictureState extends State<TakePicture> {
   }
 }
 
-// configurar Android manifest
-// C:\src\Aula_Camera\camera_1\android\app\src\main\AndroidManifest.xml
-// adicionar o comando android:requestLegacyExternalStorage="true" dentro da tag application
+// inserir o consumer para pegar o url
+
+
+

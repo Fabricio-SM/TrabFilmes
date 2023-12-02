@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/id_create.dart';
 
 import '../model/comment.dart';
 import '../services/comment_service.dart';
+import '../services/notification_service.dart';
 
 class CreatePost extends StatefulWidget {
   const CreatePost({super.key});
@@ -80,6 +83,14 @@ class _CreatePostState extends State<CreatePost> {
                       conteudo: commController.text),
                 );
                 Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Comentário criado com sucesso!!"),
+                    duration: Duration(seconds: 5),
+                  ),
+                );
+                NotificationService.showNotification(
+                    "Adição de comentários", "Comentário ${titleController.text} adicionado.");
               },
               child: Text('Publicar'),
             ),
