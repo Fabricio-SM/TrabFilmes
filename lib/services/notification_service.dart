@@ -42,11 +42,7 @@ class NotificationService {
       const androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'ifsp01',
         'IFSP Notificações',
-        actions: <AndroidNotificationAction>[
-          AndroidNotificationAction('id_1', 'Ação 1'),
-          AndroidNotificationAction('id_2', 'Ação 2'),
-          AndroidNotificationAction('id_3', 'Ação 3'),
-        ],
+        actions: <AndroidNotificationAction>[],
       );
 
       // Objeto que carrega os dados específico para a criação do canal

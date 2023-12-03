@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/image_cache.dart';
 import 'package:flutter_application_1/services/notification_service.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'routes.dart';
 import 'routes/login_page.dart';
-import 'widgets/perfil_cache.dart';
+import 'providers/perfil_cache.dart';
 
 // final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
 // testar geolocalização
@@ -30,6 +30,9 @@ class FilmesApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<Cache>.value(
           value: Cache(),
+        ),
+        ChangeNotifierProvider<ImagePathProvider>.value(
+          value: ImagePathProvider(),
         ),
       ],
       child: MaterialApp(

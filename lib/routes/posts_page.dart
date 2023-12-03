@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/comment.dart';
 import 'package:flutter_application_1/routes/create_post.dart';
 import 'package:flutter_application_1/widgets/film_card.dart';
-import 'package:flutter_application_1/widgets/perfil_cache.dart';
+import 'package:flutter_application_1/providers/perfil_cache.dart';
 import 'package:provider/provider.dart';
 import '../services/comment_service.dart';
 import 'edit_post_page.dart';

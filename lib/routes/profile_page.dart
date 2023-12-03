@@ -1,8 +1,11 @@
-// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, avoid_print
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, avoid_print, unnecessary_null_comparison
+
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/image_cache.dart';
 import 'package:flutter_application_1/routes/tirar_foto.dart';
-import 'package:flutter_application_1/widgets/perfil_cache.dart';
+import 'package:flutter_application_1/providers/perfil_cache.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -180,7 +183,7 @@ class _MyProfile extends State<MyProfile> {
                             if (placemark != null) {
                               setState(() {
                                 _addressController.text =
-                                    '${placemark.locality}, ${placemark.administrativeArea}, ${placemark.country}';
+                                    '${placemark.street}, ${placemark.locality}, ${placemark.administrativeArea}, ${placemark.country}';
                               });
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -201,6 +204,3 @@ class _MyProfile extends State<MyProfile> {
     );
   }
 }
-
-// criar o provider para guardar a url da imagem tirada
-// inserir o consumer para buscar o url

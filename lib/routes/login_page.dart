@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../routes.dart';
-import '../widgets/perfil_cache.dart';
+import '../providers/perfil_cache.dart';
 
 //import '../routes.dart';
 

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter_application_1/model/comment.dart';
 import 'package:http/http.dart' as http;
 
-const String Url = 'http://192.168.6.93:5000/posts';
+const String Url = 'http://192.168.0.108:5000/posts';
 
 Future<List<Comment>> fetchComm() async {
   final response = await http.get(Uri.parse(Url));
