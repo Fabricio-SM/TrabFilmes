@@ -55,7 +55,7 @@ class _FormLoginState extends State<FormLogin> {
                       child: TextFormField(
                         controller: _nameController,
                         decoration: InputDecoration(
-                          labelText: 'Full name',
+                          labelText: 'Usuário',
                           filled: true,
                           fillColor: const Color.fromARGB(255, 255, 255, 255),
                           border: OutlineInputBorder(
@@ -78,7 +78,7 @@ class _FormLoginState extends State<FormLogin> {
                       child: TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          labelText: 'Email address',
+                          labelText: 'Email',
                           filled: true,
                           fillColor: Color.fromARGB(255, 255, 255, 255),
                           border: OutlineInputBorder(
@@ -100,7 +100,7 @@ class _FormLoginState extends State<FormLogin> {
                       child: TextFormField(
                         controller: _passwdController,
                         decoration: InputDecoration(
-                          labelText: 'Password',
+                          labelText: 'Senha',
                           filled: true,
                           fillColor: const Color.fromARGB(255, 255, 255, 255),
                           border: OutlineInputBorder(

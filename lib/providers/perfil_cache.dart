@@ -8,7 +8,6 @@ class Cache extends ChangeNotifier {
   var _index = -1;
 
   final List<User> _login = [
-    User("a", "a@gmail.com", '1996-07-24', '1234567'),
     // User("Eo","eu@gmail.com", '1998-05-05', '1234567'),
   ];
 

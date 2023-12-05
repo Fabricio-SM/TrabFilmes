@@ -44,48 +44,61 @@ class _MyProfile extends State<MyProfile> {
             child: Center(
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: mediaQuery.width * 0.6,
-                          height: mediaQuery.width * 0.6,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2,
-                            ),
-                            image: const DecorationImage(
-                              image: AssetImage(
-                                'lib/img/perfil.jpg',
-                              ),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        color: Colors.cyan,
-                        child: IconButton(
-                          icon: const Icon(Icons.photo_camera),
-                          onPressed: () async {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TakePicture(),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 10,
                   ),
+                  Consumer<ImagePathProvider>(
+                      builder: (context, imagePathProvider, _) {
+                    imagePathProvider.getImagePath();
+                    return Center(
+                      child: GestureDetector(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: imagePathProvider.imagePath != ''
+                              ? Container(
+                                  width: mediaQuery.width * 0.6,
+                                  height: mediaQuery.width * 0.6,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Image.file(
+                                    File(imagePathProvider.imagePath),
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : Container(
+                                  width: mediaQuery.width * 0.6,
+                                  height: mediaQuery.width * 0.6,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(
+                                      color: Colors.black,
+                                      width: 2,
+                                    ),
+                                    image: const DecorationImage(
+                                      image: AssetImage(
+                                        'lib/img/perfil.jpg',
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                        ),
+                        onTap: () async {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TakePicture(),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  }),
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0, left: 8.0),
                     child: Column(

@@ -20,16 +20,17 @@ class TakePicture extends StatefulWidget {
 
 class _TakePictureState extends State<TakePicture> {
   // late -> deixa a inicialização da váriavel pra mais tarde no código
+  late ImagePathProvider imgProvider;
+
   late final CameraController
       _cameraController; // objeto que controlará a câmera
   // pois a chamada da camera é assíncrona
   late final Future<void> _cameraIniciada;
 
-  late String pathToProfilePic;
-
   @override
   void initState() {
     super.initState();
+    imgProvider = Provider.of<ImagePathProvider>(context, listen: false);
     // // pede pro flutter utilizar os recursos nativos do android (camera,microfone...)
     // // garante o bind entre o flutter e outra linguagem q esteja sendo usada (por exemplo C#, C++)
     // WidgetsFlutterBinding.ensureInitialized();
@@ -69,18 +70,15 @@ class _TakePictureState extends State<TakePicture> {
             },
           ),
 
-          // botão q tira a foto
           IconButton(
             onPressed: () async {
               // tira a foto
               final image = await _cameraController.takePicture();
               Uint8List imageBytes = await image.readAsBytes();
               // salva a foto na galeria
-              final imageSavedData =
-                  await ImageGallerySaver.saveImage(imageBytes);
-              String URL = imageSavedData["filePath"];
-
-              print(URL);
+              ImageGallerySaver.saveImage(imageBytes);
+              print(image.path);
+              imgProvider.setImagePath(image.path);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("Foto salva na Galeria"),

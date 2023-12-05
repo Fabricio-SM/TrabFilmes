@@ -1,16 +1,5 @@
-# flutter_application_1
+# Trabalho PDM - Postagem de Filmes
 
-A new Flutter project.
+Trabalho referente a um app aonde contém uma lista de comentários sobre filmes.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Alimentado pelo BD vindo da api do projeto contido no link: https://github.com/Irnyni/Sprint1.git
