@@ -2,4 +2,4 @@
 
 Trabalho referente a um app aonde contém uma lista de comentários sobre filmes.
 
-Alimentado pelo BD vindo da api do projeto contido no link: https://github.com/Irnyni/Sprint1.git
+Alimentado pelo BD vindo da api do projeto contido no link: https://github.com/Fabricio-SM/TrabFilmes_Web.git
