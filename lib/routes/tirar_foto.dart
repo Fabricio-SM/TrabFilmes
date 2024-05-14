@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, non_constant_identifier_names
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print
 
 import 'dart:typed_data';
 
@@ -6,7 +6,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/image_cache.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class TakePicture extends StatefulWidget {
@@ -94,19 +93,3 @@ class _TakePictureState extends State<TakePicture> {
     );
   }
 }
-
-// Future<void> _pickImageFromGallery() async {
-//   final picker = ImagePicker();
-//   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-//   if (pickedFile != null) {
-//     // A imagem foi escolhida com sucesso. Agora você pode fazer o que quiser com o caminho da imagem.
-//     String imagePath = pickedFile.path;
-
-//     // Agora você pode salvar o caminho da imagem no seu provider.
-//     Provider.of<ImagePathProvider>(context, listen: false)
-//         .setImagePath(imagePath);
-//   } else {
-//     // Usuário cancelou a seleção.
-//   }
-// }

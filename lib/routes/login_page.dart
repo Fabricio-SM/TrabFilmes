@@ -1,4 +1,6 @@
-// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, avoid_print
+
+
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,9 +8,10 @@ import 'package:provider/provider.dart';
 import '../routes.dart';
 import '../providers/perfil_cache.dart';
 
-//import '../routes.dart';
 
 class FormLogin extends StatefulWidget {
+  const FormLogin({super.key});
+
   @override
   _FormLoginState createState() => _FormLoginState();
 }
@@ -30,7 +33,7 @@ class _FormLoginState extends State<FormLogin> {
             child: Container(
               width: mediaQuery.width * 0.9,
               height: mediaQuery.height * 0.7,
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 color: Colors.cyan,
@@ -40,8 +43,8 @@ class _FormLoginState extends State<FormLogin> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
+                    const Padding(
+                      padding: EdgeInsets.all(10.0),
                       child: Text(
                         "Login",
                         style: TextStyle(
@@ -51,7 +54,7 @@ class _FormLoginState extends State<FormLogin> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 40),
+                      margin: const EdgeInsets.only(bottom: 40),
                       child: TextFormField(
                         controller: _nameController,
                         decoration: InputDecoration(
@@ -60,7 +63,7 @@ class _FormLoginState extends State<FormLogin> {
                           fillColor: const Color.fromARGB(255, 255, 255, 255),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Color.fromARGB(255, 255, 255, 255)),
                           ),
                         ),
@@ -74,16 +77,16 @@ class _FormLoginState extends State<FormLogin> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 40),
+                      margin: const EdgeInsets.only(bottom: 40),
                       child: TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
                           labelText: 'Email',
                           filled: true,
-                          fillColor: Color.fromARGB(255, 255, 255, 255),
+                          fillColor: const Color.fromARGB(255, 255, 255, 255),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: Colors.black),
+                            borderSide: const BorderSide(color: Colors.black),
                           ),
                         ),
                         validator: (value) {
@@ -96,7 +99,7 @@ class _FormLoginState extends State<FormLogin> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 40),
+                      margin: const EdgeInsets.only(bottom: 40),
                       child: TextFormField(
                         controller: _passwdController,
                         decoration: InputDecoration(
@@ -105,9 +108,9 @@ class _FormLoginState extends State<FormLogin> {
                           fillColor: const Color.fromARGB(255, 255, 255, 255),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color:
-                                    const Color.fromARGB(255, 255, 255, 255)),
+                                    Color.fromARGB(255, 255, 255, 255)),
                           ),
                         ),
                         obscureText: true,
@@ -141,7 +144,7 @@ class _FormLoginState extends State<FormLogin> {
                               .pushNamed(RouteGenerator.tabsPage);
                         }
                       },
-                      child: Text(
+                      child: const Text(
                         'Entrar no app',
                         style: TextStyle(color: Colors.white),
                       ),

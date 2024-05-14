@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/comment.dart';
@@ -10,7 +9,7 @@ import '../services/comment_service.dart';
 import 'edit_post_page.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _PostMenuState();
@@ -23,12 +22,12 @@ class _PostMenuState extends State<Home> {
       builder: (context, cache, _) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("Posts"),
+            title: const Text("Posts"),
           ),
-          backgroundColor: Color.fromARGB(0, 236, 233, 248),
+          backgroundColor: const Color.fromARGB(0, 236, 233, 248),
           body: CommentListWidget(),
           floatingActionButton: FloatingActionButton(
-            child: Icon(
+            child: const Icon(
               Icons.add,
               color: Colors.white,
             ),
@@ -44,19 +43,21 @@ class _PostMenuState extends State<Home> {
 }
 
 class CommentListWidget extends StatelessWidget {
+  const CommentListWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10, top: 10),
+      margin: const EdgeInsets.only(bottom: 10, top: 10),
       width: 1080,
       decoration: BoxDecoration(
-          color: Color.fromARGB(236, 247, 239, 239),
+          color: const Color.fromARGB(236, 247, 239, 239),
           borderRadius: BorderRadius.circular(30)),
       child: FutureBuilder<List<Comment>>(
         future: fetchComm(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Erro: ${snapshot.error}'));
           } else {

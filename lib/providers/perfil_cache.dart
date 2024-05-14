@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_final_fields, prefer_const_constructors
-
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/user.dart';
@@ -7,9 +5,7 @@ import 'package:flutter_application_1/model/user.dart';
 class Cache extends ChangeNotifier {
   var _index = -1;
 
-  final List<User> _login = [
-    // User("Eo","eu@gmail.com", '1998-05-05', '1234567'),
-  ];
+  final List<User> _login = [];
 
   // Adiciona novos items na lista
   void addItem(String nome, String email, String? dataNasc, String senha) {

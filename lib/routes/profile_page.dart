@@ -1,4 +1,5 @@
-// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, avoid_print, unnecessary_null_comparison
+
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print
 
 import 'dart:io';
 
@@ -13,7 +14,7 @@ import 'package:provider/provider.dart';
 import '../services/location_service.dart';
 
 class MyProfile extends StatefulWidget {
-  const MyProfile();
+  const MyProfile({super.key});
 
   @override
   _MyProfile createState() => _MyProfile();
@@ -37,7 +38,7 @@ class _MyProfile extends State<MyProfile> {
       builder: (context, cache, _) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("Meu Perfil"),
+            title: const Text("Meu Perfil"),
           ),
           backgroundColor: const Color(0xFFF1F3F6),
           body: SingleChildScrollView(
@@ -92,7 +93,7 @@ class _MyProfile extends State<MyProfile> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TakePicture(),
+                              builder: (context) => const TakePicture(),
                             ),
                           );
                         },
@@ -111,13 +112,13 @@ class _MyProfile extends State<MyProfile> {
                             fillColor: const Color.fromARGB(255, 255, 255, 255),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color:
-                                      const Color.fromARGB(255, 255, 255, 255)),
+                                      Color.fromARGB(255, 255, 255, 255)),
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
@@ -126,13 +127,13 @@ class _MyProfile extends State<MyProfile> {
                             fillColor: const Color.fromARGB(255, 255, 255, 255),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color:
-                                      const Color.fromARGB(255, 255, 255, 255)),
+                                      Color.fromARGB(255, 255, 255, 255)),
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         TextFormField(
                           controller: _addressController,
                           readOnly: true,
@@ -142,13 +143,13 @@ class _MyProfile extends State<MyProfile> {
                             fillColor: const Color.fromARGB(255, 255, 255, 255),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color:
-                                      const Color.fromARGB(255, 255, 255, 255)),
+                                      Color.fromARGB(255, 255, 255, 255)),
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         TextField(
                           controller:
                               dateinput, //editing controller of this TextField
@@ -156,7 +157,7 @@ class _MyProfile extends State<MyProfile> {
                             labelText: cache
                                 .listPerfil[0].dataNasc, //label text of field
                             icon:
-                                Icon(Icons.calendar_today), //icon of text field
+                                const Icon(Icons.calendar_today), //icon of text field
                           ),
                           readOnly:
                               true, //set it true, so that user will not able to edit text
@@ -186,9 +187,9 @@ class _MyProfile extends State<MyProfile> {
                             }
                           },
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         ElevatedButton(
-                          child: Text("Buscar endereço"),
+                          child: const Text("Buscar endereço"),
                           onPressed: () async {
                             Placemark? placemark =
                                 await _locationService.getCurrentLocation();
@@ -199,7 +200,7 @@ class _MyProfile extends State<MyProfile> {
                                     '${placemark.street}, ${placemark.locality}, ${placemark.administrativeArea}, ${placemark.country}';
                               });
                             } else {
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                   content: Text(
                                       'Não foi possível obter a localização.')));
                             }

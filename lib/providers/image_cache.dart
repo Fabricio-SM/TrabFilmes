@@ -11,7 +11,6 @@ class ImagePathProvider extends ChangeNotifier {
   }
 
   String getImagePath() {
-    print('Caminho da Imagem: $_imagePath');
     return _imagePath;
   }
 }

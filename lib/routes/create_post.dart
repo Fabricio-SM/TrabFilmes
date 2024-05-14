@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/id_create.dart';
@@ -23,14 +23,14 @@ class _CreatePostState extends State<CreatePost> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Criar Post"),
+        title: const Text("Criar Post"),
       ),
       body: Padding(
         padding: const EdgeInsets.only(right: 8.0, left: 8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             TextFormField(
@@ -41,8 +41,8 @@ class _CreatePostState extends State<CreatePost> {
                 fillColor: const Color.fromARGB(255, 255, 255, 255),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 255, 255, 255)),
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 255, 255, 255)),
                 ),
               ),
             ),
@@ -54,8 +54,8 @@ class _CreatePostState extends State<CreatePost> {
                 fillColor: const Color.fromARGB(255, 255, 255, 255),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 255, 255, 255)),
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 255, 255, 255)),
                 ),
               ),
             ),
@@ -68,8 +68,8 @@ class _CreatePostState extends State<CreatePost> {
                 fillColor: const Color.fromARGB(255, 255, 255, 255),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 255, 255, 255)),
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 255, 255, 255)),
                 ),
               ),
             ),
@@ -92,9 +92,9 @@ class _CreatePostState extends State<CreatePost> {
                 NotificationService.showNotification(
                     "Adição de comentários", "Comentário ${titleController.text} adicionado.");
               },
-              child: Text('Publicar'),
+              child: const Text('Publicar'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],

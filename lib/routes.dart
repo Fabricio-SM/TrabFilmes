@@ -12,7 +12,7 @@ class RouteGenerator {
     switch (settings.name) {
       case homePage:
         return MaterialPageRoute(
-          builder: (_) => FormLogin(),
+          builder: (_) => const FormLogin(),
         );
         case tabsPage:
         return MaterialPageRoute(

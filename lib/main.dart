@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print, library_private_types_in_public_api
+// ignore_for_file: avoid_print, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/image_cache.dart';
@@ -8,21 +8,15 @@ import 'routes.dart';
 import 'routes/login_page.dart';
 import 'providers/perfil_cache.dart';
 
-// final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
-// testar geolocalização
-
 void main() async {
-  // pede pro flutter utilizar os recursos nativos do android (camera,microfone...)
-  // // garante o bind entre o flutter e outra linguagem q esteja sendo usada (por exemplo C#, C++)
   // sempre colocar no caso de ser preciso usar um perfiférico
   WidgetsFlutterBinding.ensureInitialized();
-  // await _geolocatorPlatform.requestPermission();
   await NotificationService.initializeNotificationsChannel();
-  runApp(FilmesApp());
+  runApp(const FilmesApp());
 }
 
 class FilmesApp extends StatelessWidget {
-  const FilmesApp();
+  const FilmesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +37,7 @@ class FilmesApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.cyan,
         ),
-        home: FormLogin(),
+        home: const FormLogin(),
       ),
     );
   }

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/comment.dart';
 import 'package:flutter_application_1/styles.dart';
@@ -26,7 +24,7 @@ class FilmCard extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black, width: 0.5),
           borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(0, 240, 213, 213),
+          color: const Color.fromARGB(0, 240, 213, 213),
         ),
         child: Column(
           children: [
